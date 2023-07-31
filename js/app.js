@@ -14,6 +14,16 @@ if (localStorage.address) {
 	document.getElementById("password").style.display = "none";
 	address = localStorage.address;
 }
+// m button for mute
+document.addEventListener("keydown", (e) => {
+	if (e.key === "m") {
+		if (audio.paused) {
+			audio.play();
+		} else {
+			audio.pause();
+		}
+	}
+});
 const game = {
 	score: 0,
 	level: 1,
@@ -69,6 +79,8 @@ const game = {
 		ctx.fillText(`Max Boxes: ${this.maxBoxes}`, 20, 120);
 		ctx.fillText(`Interval Rate: ${this.intervalRate}`, 20, 150);
 		ctx.fillText(`Boxes: ${this.boxes.length}`, 20, 180);
+		ctx.fillText(`Audio: ${audio.paused ? "Off" : "On"}`, 20, 210);
+		ctx.fillText(`Mute: m`, 20, 240);
 
 		// Draw each box
 		this.boxes.forEach((box) => {
