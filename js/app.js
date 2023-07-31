@@ -36,8 +36,8 @@ const game = {
 
 		// white border
 		ctx.strokeStyle = "white";
-		ctx.strokeRect(0, 0, canvas.width, canvas.height);
-
+		// thick inner border
+		ctx.strokeRect(5, 5, canvas.width - 10, canvas.height - 10);
 		// Score and level
 		ctx.fillStyle = "white";
 		ctx.font = "20px Arial";
