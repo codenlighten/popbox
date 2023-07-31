@@ -11,20 +11,67 @@ canvas {
 	width: 100vw;
 }
 .replay-button {
+	width: 90%;
 	font-size: 60px;
 	padding: 10px 20px;
+	margin: 10px auto;
 	border: none;
 	border-radius: 5px;
 	background-color: #4caf50; /* Green */
 	color: white;
 	cursor: pointer;
+	transition: background-color 0.3s;
+}
+#buttons {
 	position: fixed;
-	/* middle of screen */
 	top: 50%;
 	left: 50%;
+	width: 90%;
 	transform: translate(-50%, -50%);
-
+	text-align: center;
+	color: #45a049;
+}
+#buttons h1 {
+	font-size: 60px;
+	margin: 6px auto;
+}
+#buttons .input {
+	width: 80%;
+	font-size: 60px;
+	margin: auto;
+}
+#buttons .input input {
+	width: 100%;
+	font-size: 60px;
+	padding: 10px 20px;
+	margin: 10px auto;
+	border: none;
+	border-radius: 5px;
+	background-color: #4caf50; /* Green */
+	color: white;
+	cursor: pointer;
 	transition: background-color 0.3s;
+}
+#buttons .input input:hover {
+	background-color: #45a049;
+}
+#buttons .input input:focus {
+	outline: none;
+}
+
+#buttons .input input::placeholder {
+	color: white;
+}
+
+#buttons .input input::-webkit-input-placeholder {
+	color: white;
+}
+
+#buttons img {
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 2px;
 }
 
 .replay-button:hover {

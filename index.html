@@ -7,6 +7,9 @@
 		<!-- favicon logo.png -->
 		<link rel="icon" href="./logo.png" />
 		<!-- twitter popbox.click-->
+		<script src="./js/encryption.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bsv@1.5.0/bsv.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bsv@1.5.0/bsv-mnemonic.min.js"></script>
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@popbox" />
 		<meta name="twitter:title" content="Pop Box" />
@@ -19,8 +22,21 @@
 		<title>Pop Box</title>
 	</head>
 	<body>
-		<button id="replay" class="replay-button">Replay</button>
+		<div id="buttons">
+			<img src="./logo.png" alt="" />
+			<h1>Pop Box!</h1>
+			<button id="replay" class="replay-button">Replay</button>
+			<input
+				type="password"
+				placeholder="add password"
+				class="input"
+				id="password"
+			/>
+		</div>
+
 		<canvas id="game"></canvas>
 	</body>
 	<script src="./js/app.js"></script>
+	<script src="./js/crypt.js"></script>
+	<script src="./js/wallet.js"></script>
 </html>
