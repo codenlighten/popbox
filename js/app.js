@@ -3,7 +3,13 @@ const canvas = document.getElementById("game");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const ctx = canvas.getContext("2d");
+const music = "./bgmusic.mp3";
+// loop music
+const audio = new Audio(music);
+audio.loop = true;
 const replayButton = document.getElementById("replay");
+replayButton.innerText = "Start"; // Set the button text to "Start" initially
+
 const game = {
 	score: 0,
 	level: 1,
@@ -11,6 +17,8 @@ const game = {
 	maxBoxes: 10,
 	intervalRate: 1000,
 	start: function () {
+		audio.play();
+		replayButton.innerText = "Restart"; // Change the button text to "Restart" when the game starts
 		replayButton.style.display = "none"; // Hide the button when game starts
 		this.interval = setInterval(() => {
 			if (this.boxes.length < this.maxBoxes) {
@@ -22,6 +30,7 @@ const game = {
 			} else {
 				this.stop();
 				alert("Game Over!");
+
 				replayButton.style.display = "block"; // Show the button when game is over
 			}
 		}, this.intervalRate);
@@ -113,5 +122,3 @@ canvas.addEventListener("click", function (e) {
 replayButton.addEventListener("click", function () {
 	game.reset();
 });
-
-game.start();
