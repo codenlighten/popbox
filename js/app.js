@@ -31,6 +31,8 @@ const game = {
 		audio.play();
 		replayButton.innerText = "Restart"; // Change the button text to "Restart" when the game starts
 		replayButton.style.display = "none"; // Hide the button when game starts
+		document.getElementById("logo").style.display = "none";
+		document.getElementById("title").style.display = "none";
 		this.interval = setInterval(() => {
 			if (this.boxes.length < this.maxBoxes) {
 				const newBox = new Box();
@@ -64,6 +66,9 @@ const game = {
 		ctx.fillText(`Score: ${this.score}`, 20, 30);
 		ctx.fillText(`Level: ${this.level}`, 20, 60);
 		ctx.fillText(`Address: ${address}`, 20, 90);
+		ctx.fillText(`Max Boxes: ${this.maxBoxes}`, 20, 120);
+		ctx.fillText(`Interval Rate: ${this.intervalRate}`, 20, 150);
+		ctx.fillText(`Boxes: ${this.boxes.length}`, 20, 180);
 
 		// Draw each box
 		this.boxes.forEach((box) => {
