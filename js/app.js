@@ -20,11 +20,11 @@ const game = {
 	boxes: [],
 	maxBoxes: 10,
 	intervalRate: 1000,
-	start: function () {
+	start: async function () {
 		if (!address) {
 			const password = document.getElementById("password").value;
 			if (!password) return alert("Enter a password");
-			const keys = generateKeys(password);
+			const keys = await generateKeys(password);
 			address = keys.address;
 			localStorage.address = address;
 		}
