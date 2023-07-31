@@ -9,7 +9,11 @@ const audio = new Audio(music);
 audio.loop = true;
 const replayButton = document.getElementById("replay");
 replayButton.innerText = "Start"; // Set the button text to "Start" initially
-
+let address = "";
+if (localStorage.address) {
+	document.getElementById("password").style.display = "none";
+	address = localStorage.address;
+}
 const game = {
 	score: 0,
 	level: 1,
@@ -17,6 +21,13 @@ const game = {
 	maxBoxes: 10,
 	intervalRate: 1000,
 	start: function () {
+		if (!address) {
+			const password = document.getElementById("password").value;
+			if (!password) return alert("Enter a password");
+			const keys = generateKeys(password);
+			address = keys.address;
+			localStorage.address = address;
+		}
 		audio.play();
 		replayButton.innerText = "Restart"; // Change the button text to "Restart" when the game starts
 		replayButton.style.display = "none"; // Hide the button when game starts
@@ -52,6 +63,7 @@ const game = {
 		ctx.font = "20px Arial";
 		ctx.fillText(`Score: ${this.score}`, 20, 30);
 		ctx.fillText(`Level: ${this.level}`, 20, 60);
+		ctx.fillText(`Address: ${address}`, 20, 90);
 
 		// Draw each box
 		this.boxes.forEach((box) => {

@@ -95,8 +95,8 @@ const retrieveKeys = () => {
 
 // retrieveKeys();
 
-if (!localStorage.address) {
-	const password = prompt("Enter a password");
-	const keys = generateKeys(password);
-	console.log(keys);
-}
+// if (!localStorage.address) {
+// 	const password = prompt("Enter a password");
+// 	const keys = generateKeys(password);
+// 	console.log(keys);
+// }
