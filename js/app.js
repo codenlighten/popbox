@@ -3,13 +3,14 @@ const canvas = document.getElementById("game");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const ctx = canvas.getContext("2d");
+const replayButton = document.getElementById("replay");
 
 const game = {
 	score: 0,
 	level: 1,
 	boxes: [],
 	maxBoxes: 10,
-	intervalRate: 1000, // Box generation interval in milliseconds
+	intervalRate: 1000,
 	start: function () {
 		this.interval = setInterval(() => {
 			if (this.boxes.length < this.maxBoxes) {
@@ -51,6 +52,14 @@ const game = {
 	},
 	stop: function () {
 		clearInterval(this.interval);
+	},
+	reset: function () {
+		this.stop();
+		this.score = 0;
+		this.level = 1;
+		this.boxes = [];
+		this.intervalRate = 1000;
+		this.start();
 	},
 };
 
@@ -99,6 +108,10 @@ canvas.addEventListener("click", function (e) {
 			break;
 		}
 	}
+});
+
+replayButton.addEventListener("click", function () {
+	game.reset();
 });
 
 game.start();
