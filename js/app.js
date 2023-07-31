@@ -4,7 +4,6 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const ctx = canvas.getContext("2d");
 const replayButton = document.getElementById("replay");
-
 const game = {
 	score: 0,
 	level: 1,
@@ -12,6 +11,7 @@ const game = {
 	maxBoxes: 10,
 	intervalRate: 1000,
 	start: function () {
+		replayButton.style.display = "none"; // Hide the button when game starts
 		this.interval = setInterval(() => {
 			if (this.boxes.length < this.maxBoxes) {
 				const newBox = new Box();
@@ -22,6 +22,7 @@ const game = {
 			} else {
 				this.stop();
 				alert("Game Over!");
+				replayButton.style.display = "block"; // Show the button when game is over
 			}
 		}, this.intervalRate);
 		this.render();
@@ -62,11 +63,10 @@ const game = {
 		this.start();
 	},
 };
-
 class Box {
 	constructor() {
-		this.x = Math.floor(Math.random() * (canvas.width - 50));
-		this.y = Math.floor(Math.random() * (canvas.height - 50));
+		this.x = Math.floor(Math.random() * (canvas.width - 100 - 50)); // Subtract replay button width + margin
+		this.y = Math.floor(Math.random() * (canvas.height - 100 - 50)); // Subtract replay button height + margin
 		this.width = 50;
 		this.height = 50;
 		this.color = "yellow";

@@ -1,0 +1,17 @@
+.replay-button {
+	font-size: 20px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #4caf50; /* Green */
+	color: white;
+	cursor: pointer;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	transition: background-color 0.3s;
+}
+
+.replay-button:hover {
+	background-color: #45a049;
+}
