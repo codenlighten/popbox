@@ -43,6 +43,7 @@ const game = {
 		replayButton.style.display = "none"; // Hide the button when game starts
 		document.getElementById("logo").style.display = "none";
 		document.getElementById("title").style.display = "none";
+		document.getElementById("password").style.display = "none";
 		this.interval = setInterval(() => {
 			if (this.boxes.length < this.maxBoxes) {
 				const newBox = new Box();
