@@ -54,6 +54,9 @@ const game = {
 			} else {
 				this.stop();
 				alert("Game Over!");
+				// stop more boxes from appearing, remove all boxes, pause music
+				this.boxes = [];
+				audio.pause();
 
 				replayButton.style.display = "block"; // Show the button when game is over
 			}
