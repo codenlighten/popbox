@@ -14,6 +14,7 @@ if (localStorage.address) {
 	document.getElementById("password").style.display = "none";
 	address = localStorage.address;
 }
+let gamestate = {};
 // m button for mute
 document.addEventListener("keydown", (e) => {
 	if (e.key === "m") {
@@ -48,12 +49,15 @@ const game = {
 			if (this.boxes.length < this.maxBoxes) {
 				const newBox = new Box();
 				this.boxes.push(newBox);
+				gamestate.boxes = this.boxes;
 				newBox.timer = setTimeout(() => {
 					newBox.color = "red";
 				}, 3000);
 			} else {
 				this.stop();
-				alert("Game Over!");
+				alert(
+					`Game Over. Your score is ${this.score}. You reached level ${this.level}`
+				);
 				// stop more boxes from appearing, remove all boxes, pause music
 				this.boxes = [];
 				audio.pause();
@@ -140,10 +144,11 @@ canvas.addEventListener("click", function (e) {
 				game.boxes.splice(i, 1);
 			}, 500);
 			game.score++;
-
+			gamestate.score = game.score;
 			// Increase speed every 10 points
 			if (game.score % 10 === 0 && game.intervalRate > 200) {
 				game.intervalRate -= 100;
+				gamestate.intervalRate = game.intervalRate;
 				game.stop();
 				game.start();
 			}
